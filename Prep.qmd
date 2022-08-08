@@ -1,0 +1,36 @@
+---
+title: "Untitled"
+format: revealjs
+---
+
+```{r}
+library(tidyverse)
+
+i <- 100
+
+c_1 <- -.2
+
+c_2 <- .2
+
+```
+
+```{r}
+
+o_c_1 <- i + (i * c_1)
+
+o_c_2 <- o_c_1 + (o_c_1 * c_2)
+
+o_c_2
+
+
+viz <- tibble(i, c_1, c_2)
+
+viz %>% 
+  mutate(o_c_1 = i + (i * c_1),
+         o_c_2 = o_c_1 + (o_c_1 * c_2)) %>% 
+  pivot_longer(everything()) %>% 
+  ggplot(aes(name, value)) +
+  geom_col()
+
+```
+
